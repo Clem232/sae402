@@ -1,5 +1,5 @@
 export const slides = [
-    { text: "\n\n\n\n\n\n\n\nStart your story Mark...\n\n\n\n\n\n\n\n\n\n\n\nBeshoy LUIS SHENOUDA - Klement RROTAJ - Paul RALLET - Thomas LAMBERT - Okesse SMITH", image: "images/slide0.jpg", effect: "zoomIn", audio: 0, paintIcon: "paint.png" },
+    { text: "\n\n\n\n\n\n\n\nCommence ton histoire, Mark...\n\n\n\n\n\n\n\n\n\n\n\nBeshoy LUIS SHENOUDA - Klement RROTAJ - Paul RALLET - Thomas LAMBERT - Okesse SMITH", image: "images/slide0.jpg", effect: "zoomIn", audio: 0, paintIcon: "paint.png" },
     { subtitle: "1. Le Début de la Perte", day: "Lundi - intact", text: "L'atelier de Mark. Les toiles débordent de couleurs vives.", image: "images/slide1.jpg", effect: "zoomIn", audio: 0, paintIcon: "paint.png" },
     { subtitle: "1. Le Début de la Perte", day: "Mardi - l'effacement", text: "Chaque trait me relie à mon âme… Mais aujourd'hui, je sens un vide insidieux.", image: "images/slide2.jpg", effect: "fadeOut", audio: 1, paintIcon: "paint.png" },
     { subtitle: "1. Le Début de la Perte", day: "Mercredi - L'érosion", text: "Sous l'effet du temps, l'encre de sa passion s'efface, laissant derrière elle l'ombre d'un souvenir.", image: "images/slide3.jpg", effect: "fadeIn", audio: 1, paintIcon: "paint.png" },
