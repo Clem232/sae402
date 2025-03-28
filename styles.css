@@ -411,3 +411,7 @@ button:hover img {
 .color-splash:nth-child(odd) {
     animation-direction: reverse;
 }
+
+#text {
+    white-space: pre-line !important;
+}
