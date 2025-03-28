@@ -11,10 +11,11 @@ export const slides = [
     { subtitle: "3. L'Épiphanie", day: "Mardi - Le retour des émotions", text: "Mark voit la couleur revenir sur ses mains, son environnement.", image: "images/slide9.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
     { subtitle: "4. La Renaissance Progressive", day: "Mercredi", text: "Chaque émotion redonne de la couleur à son univers.", image: "images/slide10.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
     { subtitle: "5. La Renaissance", day: "Jeudi - L'apogée", text: "Le studio de Mark, entièrement coloré et vivant.", image: "images/slide11.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
-    { subtitle: "5. La Renaissance", day: "Vendredi - L'artiste accompli", text: "Mark, souriant, entouré de ses œuvres.", image: "images/slide12.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
+    //{ subtitle: "5. La Renaissance", day: "Vendredi - L'artiste accompli", text: "Mark, souriant, entouré de ses œuvres.", image: "images/slide12.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
     { subtitle: "6. Une Vie Colorée à Deux", day: "Samedi - Le quotidien transformé", text: "Mark et son nouveau compagnon dans son studio, travaillant ensemble, une palette de couleurs vibrantes les entourant.", image: "images/slide13.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
-    { subtitle: "6. Une Vie Colorée à Deux", day: "Dimanche - Un matin rempli de lumière", text: "Mark et son partenaire travaillent ensemble, un rayon de soleil baignant la pièce.", image: "images/slide14.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
-    { subtitle: "6. Une Vie Colorée à Deux", day: "Lundi - Inspiration partagée", text: "Les mains de Mark et de son partenaire esquissant un dessin ensemble.", image: "images/slide15.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" }];
+    //{ subtitle: "6. Une Vie Colorée à Deux", day: "Dimanche - Un matin rempli de lumière", text: "Mark et son partenaire travaillent ensemble, un rayon de soleil baignant la pièce.", image: "images/slide14.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" },
+    //{ subtitle: "6. Une Vie Colorée à Deux", day: "Lundi - Inspiration partagée", text: "Les mains de Mark et de son partenaire esquissant un dessin ensemble.", image: "images/slide15.jpg", effect: "colorSpread", audio: 1, paintIcon: "paint.png" }
+    ];
 
 export const audioFiles = [
     "sons/son1.mp3",
