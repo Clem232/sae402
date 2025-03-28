@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const paintBtn = document.getElementById('paintBtn');
 
     paintBtn.addEventListener('click', function () {
+        const currentIcon = document.getElementById('paintIcon').src;
+        
+        // Ne pas déclencher si c'est le bucket
+        if (currentIcon.includes('bucket.png')) return;
+        
         // Créer l'overlay de grattage
         const scratchOverlay = document.createElement('div');
         scratchOverlay.className = 'scratch-overlay';

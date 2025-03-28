@@ -1,4 +1,4 @@
-import { slides, audioFiles, typingSoundFile } from './config.js';
+import { slides, audioFiles, typingSoundFile } from './config.js'; 
 import { AudioManager } from './audio-manager.js';
 import { SlideManager } from './slide-manager.js';
 import { EffectsManager } from './effects-manager.js';
@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
         text: document.getElementById("text"),
         day: document.getElementById("day"),
         imageBox: document.getElementById("imageBox"),
-        paintIcon: document.getElementById("paintIcon")
+        paintIcon: document.getElementById("paintIcon"),
+        paintBtn: document.getElementById("paintBtn")
     };
 
     // Initialisation des modules
@@ -77,9 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         DOM.imageBox.style.backgroundImage = `url(${slide.image})`;
         
         // Icône paint
-        if (slide.paintIcon) {
-            DOM.paintIcon.src = `images/${slide.paintIcon}`;
-        }
+        DOM.paintIcon.src = `images/${slide.paintIcon}`;
         
         // Effets visuels
         EffectsManager.applyEffect(DOM.imageBox, slide.effect);
@@ -146,6 +145,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.addEventListener("click", () => {
             audioManager.initAudioContext();
         }, { once: true });
+        
+        DOM.paintBtn.addEventListener("click", () => {
+            const currentSlide = slideManager.getCurrentSlide();
+            
+            // Vérifier si l'icône actuelle est bucket.png
+            if (currentSlide.paintIcon === "bucket.png") {
+                splashEffect.createSplashes(25); // Plus de taches pour l'effet bucket
+            }
+        });
     }
 
     // Initialisation

@@ -346,9 +346,6 @@ button:hover img {
 }
 
 
-
-
-
 /* Effet de taches de couleur */
 .color-splashes {
     position: fixed;
@@ -367,7 +364,7 @@ button:hover img {
     border-radius: 50%;
     opacity: 0;
     transform: scale(0);
-    animation: splash 0.8s ease-out forwards;
+    animation: splash 1s ease-out forwards;
     mix-blend-mode: multiply;
 }
 
