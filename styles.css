@@ -412,3 +412,6 @@ button:hover img {
     animation-direction: reverse;
 }
 
+#text {
+    white-space: pre-line !important;
+}

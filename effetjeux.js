@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // Add this line RIGHT AT THE START to handle line breaks in text content
-    document.getElementById('text').style.whiteSpace = 'pre-line';
-    
+      // Add this line back (make sure it's before any other code)
+      document.getElementById('text').style.whiteSpace = 'pre-line';
+
     const paintBtn = document.getElementById('paintBtn');
 
     paintBtn.addEventListener('click', function () {
