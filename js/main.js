@@ -5,6 +5,7 @@ import { EffectsManager } from './effects-manager.js';
 import { initCursor } from './cursor.js';
 import { ProgressBar } from './progress-bar.js';
 import { SplashEffect } from './splash-effect.js'; // Importation de l'effet Splash
+import { ScratchEffect } from './scratch-effect.js'; // Importation de l'effet Scratch
 
 document.addEventListener("DOMContentLoaded", () => {
     // Initialisation des éléments DOM
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const slideManager = new SlideManager(slides);
     const progressBar = new ProgressBar(slides.length);
     const splashEffect = new SplashEffect(); // Initialisation de l'effet splash
+    const scratchEffect = new ScratchEffect(); // Initialisation de l'effet scratch
     initCursor();
 
     // Fonction pour créer les cercles animés
@@ -151,7 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // Vérifier si l'icône actuelle est bucket.png
             if (currentSlide.paintIcon === "bucket.png") {
-                splashEffect.createSplashes(25); // Plus de taches pour l'effet bucket
+                splashEffect.createSplashes(25);
+                // Changer directement l'image pour les slides avec bucket
+                DOM.imageBox.style.backgroundImage = `url(${currentSlide.image.replace('images/', 'images/colo/')})`;
+            } else {
+                scratchEffect.createScratchOverlay(currentSlide);
             }
         });
     }

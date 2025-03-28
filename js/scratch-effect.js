@@ -1,22 +1,12 @@
-document.addEventListener('DOMContentLoaded', function () {
+export class ScratchEffect {
+    constructor() {
+        this.isActive = false;
+    }
 
-        // Add this line RIGHT AT THE START to handle line breaks in text content
-        document.getElementById('text').style.whiteSpace = 'pre-line';
+    createScratchOverlay(currentSlide) {
+        if (this.isActive) return;
+        this.isActive = true;
 
-    const paintBtn = document.getElementById('paintBtn');
-
-    paintBtn.addEventListener('click', function () {
-        const currentSlide = slides[currentSlideIndex];
-        const currentIcon = document.getElementById('paintIcon').src;
-        
-        // Ne pas déclencher si c'est le bucket
-        if (currentIcon.includes('bucket.png')) {
-            // Pour les slides avec bucket, juste changer l'image directement
-            document.getElementById('slideImage').src = currentSlide.image.replace('images/', 'images/colo/');
-            return;
-        }
-        
-        // Créer l'overlay de grattage
         const scratchOverlay = document.createElement('div');
         scratchOverlay.className = 'scratch-overlay';
         scratchOverlay.style.position = 'fixed';
@@ -30,21 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
         scratchOverlay.style.justifyContent = 'center';
         scratchOverlay.style.alignItems = 'center';
 
-        // Créer le conteneur du canvas
         const scratchContainer = document.createElement('div');
         scratchContainer.className = 'scratch-container';
         scratchContainer.style.position = 'relative';
         scratchContainer.style.width = '90%';
         scratchContainer.style.height = '90%';
 
-        // Créer l'image de fond (version couleur)
         const colorImage = document.createElement('img');
         colorImage.src = currentSlide.image.replace('images/', 'images/colo/');
         colorImage.style.width = '100%';
         colorImage.style.height = '100%';
         colorImage.style.objectFit = 'cover';
 
-        // Créer le canvas pour gratter
         const scratchCanvas = document.createElement('canvas');
         scratchCanvas.id = 'scratchCanvas';
         scratchCanvas.style.position = 'absolute';
@@ -52,12 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
         scratchCanvas.style.left = '0';
         scratchCanvas.style.cursor = 'crosshair';
 
-        // Ajout des éléments
         scratchContainer.appendChild(colorImage);
         scratchContainer.appendChild(scratchCanvas);
         scratchOverlay.appendChild(scratchContainer);
 
-        // Bouton de fermeture
         const closeBtn = document.createElement('button');
         closeBtn.textContent = '×';
         closeBtn.style.position = 'absolute';
@@ -69,30 +54,33 @@ document.addEventListener('DOMContentLoaded', function () {
         closeBtn.style.color = 'white';
         closeBtn.style.cursor = 'pointer';
 
-        closeBtn.addEventListener('click', function () {
+        closeBtn.addEventListener('click', () => {
             document.body.removeChild(scratchOverlay);
+            this.isActive = false;
         });
 
         scratchOverlay.appendChild(closeBtn);
         document.body.appendChild(scratchOverlay);
 
-        // Initialiser le canvas
-        const ctx = scratchCanvas.getContext('2d');
-        scratchCanvas.width = scratchContainer.offsetWidth;
-        scratchCanvas.height = scratchContainer.offsetHeight;
+        this.initCanvas(scratchCanvas, currentSlide.image);
+    }
 
-        // Dessiner la couche à gratter (noir et blanc)
+    initCanvas(canvas, imageSrc) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+
         const scratchLayer = new Image();
-        scratchLayer.src = currentSlide.image;
+        scratchLayer.src = imageSrc;
 
-        scratchLayer.onload = function () {
-            ctx.drawImage(scratchLayer, 0, 0, scratchCanvas.width, scratchCanvas.height);
+        scratchLayer.onload = function() {
+            ctx.drawImage(scratchLayer, 0, 0, canvas.width, canvas.height);
         };
 
         let isDrawing = false;
 
         function getMousePos(e) {
-            const rect = scratchCanvas.getBoundingClientRect();
+            const rect = canvas.getBoundingClientRect();
             return {
                 x: e.clientX - rect.left,
                 y: e.clientY - rect.top
@@ -108,24 +96,22 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.fill();
         }
 
-        // Événements souris
-        scratchCanvas.addEventListener('mousedown', () => isDrawing = true);
-        scratchCanvas.addEventListener('mouseup', () => isDrawing = false);
-        scratchCanvas.addEventListener('mousemove', (e) => {
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mousemove', (e) => {
             scratch(e);
             e.preventDefault();
         });
 
-        // Événements tactiles
-        scratchCanvas.addEventListener('touchstart', (e) => {
+        canvas.addEventListener('touchstart', (e) => {
             isDrawing = true;
             scratch(e.touches[0]);
         });
 
-        scratchCanvas.addEventListener('touchend', () => isDrawing = false);
-        scratchCanvas.addEventListener('touchmove', (e) => {
+        canvas.addEventListener('touchend', () => isDrawing = false);
+        canvas.addEventListener('touchmove', (e) => {
             e.preventDefault();
             scratch(e.touches[0]);
         });
-    });
-});
+    }
+}
