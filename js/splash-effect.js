@@ -34,19 +34,23 @@ export class SplashEffect {
             splash.style.background = color;
             splash.style.left = `${Math.random() * 100}%`;
             splash.style.top = `${Math.random() * 100}%`;
-            splash.style.animationDelay = `${Math.random() * 0.3}s`;
-            splash.style.animationDuration = `${0.5 + Math.random() * 1}s`;
+            splash.style.animationDelay = `${Math.random() * 0.5}s`;  // Changer le délai pour plus de variation
+            splash.style.animationDuration = `${0.8 + Math.random() * 1.5}s`; // Plus de durée pour un effet plus fluide
             
             if (shape === 'organic') {
                 splash.style.borderRadius = this.getOrganicShape();
             }
+
+            // Ajouter un léger effet de rotation
+            splash.style.transformOrigin = 'center';
+            splash.style.animationTimingFunction = 'ease-in-out';
             
             this.container.appendChild(splash);
         }
         
         setTimeout(() => {
             this.container.style.display = 'none';
-        }, 1500);
+        }, 2500); // Laisser l'effet plus longtemps visible
     }
 
     getOrganicShape() {
@@ -54,7 +58,8 @@ export class SplashEffect {
             '50% 20% 80% 30% / 40% 30% 70% 60%',
             '60% 40% 50% 60% / 60% 50% 50% 40%',
             '30% 70% 70% 30% / 30% 30% 70% 70%',
-            '40% 60% 40% 60% / 60% 40% 60% 40%'
+            '40% 60% 40% 60% / 60% 40% 60% 40%',
+            '20% 80% 50% 50% / 50% 20% 30% 80%' // Ajouter un nouveau forme organique
         ];
         return shapes[Math.floor(Math.random() * shapes.length)];
     }
